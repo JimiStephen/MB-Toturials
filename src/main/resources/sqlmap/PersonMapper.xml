@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jimi.mb.mapper.PersonMapper">
+	 
+    <select id="selectPerson" resultType="com.jimi.mb.domain.Person" parameterType="com.jimi.mb.domain.Person">
+        SELECT *
+        FROM Person
+        WHERE id = #{id}
+    </select>
+    <select id="selectPersonByName"
+            resultType="com.jimi.mb.domain.Person">
+        SELECT *
+        FROM Person
+        WHERE username = #{username}
+    </select>
+    <insert id="insertPerson"  useGeneratedKeys="true" parameterType="com.jimi.mb.domain.Person">
+        INSERT INTO Person (id,username, birthday) VALUES (#{id},#{username}, #{birthday})
+    </insert>
+    <update id="updatePerson">
+        UPDATE Person
+        SET birthday = #{birthday}
+        WHERE id = #{id}
+    </update>
+    <delete id="deletePerson" parameterType="java.lang.Integer">
+        DELETE FROM Person
+        WHERE id = #{id}
+    </delete>
+    <delete id="deleteAllPerson">
+        DELETE FROM Person 
+    </delete>
+ </mapper>
